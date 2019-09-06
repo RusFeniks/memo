@@ -2,15 +2,18 @@
 
 class Memo
 {
-	protected $Id;
+	protected $Title;
 	protected $Text;
 	protected $Color;
 	protected $Date;
 
-	public function __construct($text, $color = '#ffffcc')
+	public function __construct($title, $text = '', $color = null)
 	{
+		global $settings;
+
+		$this->Title = $title;
 		$this->Text = $text;
-		$this->Color = $color;
+		$this->Color = $color ? $color : $settings['memoColor'];
 
 		$this->Date = date("Y-m-d H:i:s");
 	}
@@ -19,7 +22,10 @@ class Memo
 	{
 		global $settings;
 
-		echo "<div class='$settings[memoClass]' style='background-color: $this->Color;'>$this->Text</div>\n";
+		echo "<div class='$settings[memoClass]' style='background-color: $this->Color;'>";
+		echo "<div class='title' style='background-color: $this->Color;'>$this->Title<hr/></div>";
+		echo $this->Text;
+		echo "</div>\n";
 	}
 }
 
