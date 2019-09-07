@@ -40,9 +40,9 @@ class Memo
 	private function ldraw($class)
 	{
 		echo "<div class='$class' style='background-color: $this->Color;'>";
-		echo "<div class='header'><div class='title'>$this->Title</div><div class='options'><a href='delete.php/?id=$this->Id'>[x]</a></div></div>";
+		echo "<div class='header'><div class='title'>$this->Title</div><div class='options'><a href='delete.php/?id=$this->Id' onClick='return window.confirm(\"Подтвердите удаление\");'>[x]</a></div></div>";
 		echo "<div class='text'>$this->Text</div>";
-		echo "<div class='info'>[$this->Id] $this->Date</div>";
+		echo "<div class='info'>$this->Date</div>";
 		echo "</div>\n";
 	}
 }
